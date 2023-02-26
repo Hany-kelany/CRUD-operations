@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Item>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1 align="center">Hello with Items </h1>
+<div class="container p-3">
+    @if (TempData["SuccessData"] != null)
+    {
+        <h3 style="color:brown">@TempData["SuccessData"]</h3>
+    }
+    <div class="row pt-4">  
+        <div class="col-6"> 
+            <h2 class="text-primary"> Items </h2>
+        </div>
+
+        <div class="col-6 text-end">
+            <a asp-controller="Item" asp-action="New"  class="bi bi-plus-square-fill btn-light"> &nbsp; new Item</a>
+        </div>
+
+    </div>
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    Price
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr class="table-dark">
+                    <td scope="row">
+                        @item.Name
+                    </td>
+
+                    <td scope="row">
+                        @item.Price
+                    </td>
+
+                    <td scope="row">
+                        <a asp-asp-controller="Item" asp-action="Edit" asp-route-Id="@item.Id" class="bi bi-plus-circle-fill" > &nbsp; Edit</a>
+                    </td>
+
+                    <td scope="row">
+                    
+                        <a asp-asp-controller="Item" asp-action="Delete" asp-route-Id="@item.Id" class="bi bi-pencil-square"> &nbsp; Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+   
